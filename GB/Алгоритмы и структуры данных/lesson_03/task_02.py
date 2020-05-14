@@ -13,8 +13,8 @@ array = [random.randint(MIN_ITEM, MAX_ITEM) for _ in range(SIZE)]
 print(array)
 
 new_array = []
-for i in array:
-    if i % 2 == 0:
-        new_array.append(array.index(i))
+for i in range(len(array)):
+    if array[i] % 2 == 0:
+        new_array.append(i)
 
 print(new_array)
