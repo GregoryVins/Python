@@ -77,3 +77,4 @@ a = deque(input('Введите первое число в НЕХ формате
 b = deque(input('Введите второе число в НЕХ формате (цифры от 0 до F): ').upper())
 
 print(f'{list(a)} + {list(b)} = {list(sum_hex(a, b))}')
+print(f'{a} * {b} = {mult_hex(a, b)}')
