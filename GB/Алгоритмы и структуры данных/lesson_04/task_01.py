@@ -30,7 +30,7 @@ cProfile.run('foo_1(30)')  # 2692537/1    1.985    0.000    1.985    1.985 task_
 def foo_2(n):
     numbers = [1]
     summ = 1
-    for _ in range(n + 1):
+    for _ in range(1, n):
         numbers.append(numbers[-1] / -2)
         summ += numbers[-1]
     return summ
