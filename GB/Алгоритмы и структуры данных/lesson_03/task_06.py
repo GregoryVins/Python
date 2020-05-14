@@ -23,5 +23,5 @@ array_sum = 0
 for i in new_array:
     array_sum += i
 
-# assert array_sum == sum(new_array)
-print(f"TEST#1 {array_sum=}, {sum(new_array)=}")
+assert array_sum == sum(new_array)
+

@@ -23,6 +23,6 @@ while i != len(array):
     if elements_count[i] > elements_count[i - 1]:
         max_repeat = elements_count[i]
     i += 1
-else:
-    num_index = elements_count.index(max_repeat)
-    print(f"Чаще всего встречается число = {array[num_index]}")
+
+num_index = elements_count.index(max_repeat)
+print(f"Чаще всего встречается число = {array[num_index]}")
