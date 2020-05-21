@@ -5,7 +5,7 @@ import telebot
 import requests
 from bs4 import BeautifulSoup
 
-TOKEN = '1165352477:AAGEqNYBIga0hcdqaC2z-Z3HQP1Ium8-wRs'
+TOKEN = '<API key from BotFather>'
 
 bot = telebot.TeleBot(TOKEN)
 
