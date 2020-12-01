@@ -1,0 +1,32 @@
+{% extends 'mainapp/base.html' %}
+{% load static %}
+
+{% block container %}
+
+    <div class="h2 text-center head">
+        Отправить сообщение пользователю {{ recipient }}:
+    </div>
+
+    <form method="post" class="form-horizontal">
+        {% csrf_token %}
+        {{ form.as_p }}
+        <br><br>
+        <input type="submit" class="form-control btn-success" value="Отправить">
+    </form>
+    <a href="{% url 'main:index' %}" class="btn btn-danger form-control">Вернуть на главную</a>
+
+    <div class="h2 text-center head">
+        История сообщений:
+    </div>
+
+    {% for message in all_messages %}
+
+        <div class="d-flex justify-content-between">
+            <p class="text-muted">От {{ message.sender }}:</p>
+            <p>{{ message }}</p>
+            <p class="text-muted">{{ message.created }}</p>
+        </div>
+
+    {% endfor %}
+
+{% endblock %}

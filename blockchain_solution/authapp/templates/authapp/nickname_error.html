@@ -1,0 +1,12 @@
+{% extends 'authapp/base.html' %}
+{% load static %}
+
+{% block container %}
+    <style>
+        h1 {
+            margin-top: 40vh;
+        }
+    </style>
+    <h1 class="text-danger">Никнейм занят</h1>
+    <a href="{% url 'auth:register' %}" class="btn btn-info">Вернуться</a>
+{% endblock %}
