@@ -1,0 +1,22 @@
+{% extends 'base.html' %}
+{% load static %}
+
+{% block container %}
+
+    <div class="text-center m-5">
+        <h1 class="h3 mb-3 font-weight-normal">Вход:</h1>
+
+        <form class="form-horizontal" method="post">
+            {% csrf_token %}
+            {{ form.as_p }}
+            <input type="submit" value="Войти" class="form-control btn btn-success">
+        </form>
+        <a href="{% url 'authapp:register' %}" class="btn form-control">Зарегестрироваться</a>
+        <a href="#" class="btn form-control">Вход через ВКонтакте</a>
+        <a href="#" class="btn form-control">Вход через Google+</a>
+
+        <br><br>
+        <a href="{% url 'mainapp:index' %}" class="btn form-control">На главную</a>
+    </div>
+
+{% endblock %}

@@ -1,0 +1,15 @@
+{% extends 'base.html' %}
+{% load static %}
+
+{% block container %}
+
+    <h3 class="h3 text-muted">Категории:</h3>
+
+    {% for category in categories %}
+        <div class="p-3 d-flex flex-wrap justify-content-between">
+            <a href="{% url 'mainapp:category' category.pk %}">{{ category }}</a>
+            {{ category.description }}
+        </div>
+    {% endfor %}
+
+{% endblock %}

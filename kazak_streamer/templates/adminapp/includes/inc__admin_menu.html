@@ -1,0 +1,13 @@
+<ul class="menu d-flex justify-content-around">
+    <li class="btn btn-default">
+        <a href="{% url 'adminapp:index' %}" class="btn btn-default">Пользователи</a>
+    </li>
+    <li class="btn btn-default">
+        <a href="{% url 'adminapp:categories' %}" class="btn btn-default">
+            Категории
+            {% if category %}
+                : {{ category.name }}
+            {% endif %}
+        </a>
+    </li>
+</ul>

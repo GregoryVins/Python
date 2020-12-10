@@ -1,0 +1,17 @@
+{% extends 'base.html' %}
+{% load static %}
+
+{% block container %}
+
+    <div class="user-delete">
+        Уверены, что хотите удалить продукт?<b>{{ object.name }}</b>?
+        <form method="post">
+            {% csrf_token %}
+            <input type="submit" class="btn btn-danger" value="Удалить">
+        </form>
+        <a href="{% url 'adminapp:categories' %}" class="btn btn-success">
+            Отмена
+        </a>
+    </div>
+
+{% endblock %}

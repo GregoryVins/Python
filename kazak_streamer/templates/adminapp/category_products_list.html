@@ -1,0 +1,35 @@
+{% extends 'base.html' %}
+{% load static %}
+
+{% block container %}
+
+    <div class="product-list">
+        <a href="{% url 'adminapp:product_create' category.pk %}" class="btn btn-primary">
+            Новый продукт
+        </a>
+
+        {% for object in object_list %}
+            <div class="form-control {% if not object.is_active %}disabled{% endif %}">
+
+                <img src="/media/{{ object.image|default:'products_image/default.jpg' }}" alt="{{ object.name }}" class="img-fluid image-size">
+                <div class="product-name">
+                    {{ object.name }}
+                </div>
+                <div class="product-actions">
+                    <a href="{% url 'adminapp:product_read' object.pk %}">Подробнее</a>
+                    <a href="{% url 'adminapp:product_update' object.pk %}">Редактировать</a>
+                    <a href="{% url 'adminapp:product_delete' object.pk %}">Удалить</a>
+                </div>
+                <div class="summary">
+                    <b>Цена:</b>
+                    <p>{{ object.price }} руб</p>
+                    <b>Кол-во на складе:</b>
+                    <p>{{ object.quantity }}</p>
+                </div>
+
+            </div>
+        {% endfor %}
+
+    </div>
+
+{% endblock %}

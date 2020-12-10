@@ -1,0 +1,107 @@
+{% load static %}
+<!DOCTYPE html>
+<html lang="ru">
+<head>
+    <meta charset="UTF-8">
+    <title>{{ title|capfirst }}</title>
+
+    {% block js %}{% endblock %}
+
+    {% block css %}
+        <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/4.0.0/css/bootstrap.min.css"
+              integrity="sha384-Gn5384xqQ1aoWXA+058RXPxPg6fy4IWvTNh0E263XmFcJlSAwiGgFAW/dAiS6JXm"
+              crossorigin="anonymous">
+    {% endblock %}
+
+</head>
+<body>
+
+<div class="container">
+
+    <header>
+        {% block header %}
+            <nav class="navbar navbar-expand-lg navbar-light bg-light">
+                <a class="navbar-brand" href="{% url 'mainapp:index' %}">LOGOTYPE</a>
+
+                <div class="collapse navbar-collapse" id="navbarNavAltMarkup">
+                    <div class="navbar-nav">
+                        <a class="nav-item nav-link" href="{% url 'mainapp:index' %}">Главная</a>
+                        <a class="nav-item nav-link disabled" href="#">Features</a>
+                        <a class="nav-item nav-link disabled" href="#">Pricing</a>
+                        {% if user.is_authenticated %}
+                            <a class="nav-item nav-link text-success"
+                               href="{% url 'authapp:update' %}"><strong>{{ user|capfirst }}</strong>
+                            </a>
+                            <a class="nav-item nav-link text-danger" href="{% url 'authapp:logout' %}">Logout</a>
+                        {% else %}
+                            <a class="nav-item nav-link" href="{% url 'authapp:login' %}">Login</a>
+                        {% endif %}
+
+                    {% if user.is_superuser %}
+                        <a class="nav-item nav-link text-success" href="{% url 'adminapp:index' %}">Admin Panel</a>
+                    {% endif %}
+                    </div>
+                </div>
+            </nav>
+        {% endblock %}
+    </header>
+
+    <main>
+        {% block container %}{% endblock %}
+    </main>
+
+    <footer>
+        {% block footer %}
+            <footer class="container py-5">
+                <div class="row">
+                    <div class="col-12 col-md">
+                        <small class="d-block mb-3 text-muted">© 2017-{% now 'Y' %}</small>
+                    </div>
+                    <div class="col-6 col-md">
+                        <h5>Features</h5>
+                        <ul class="list-unstyled text-small">
+                            <li><a class="text-muted" href="#">Cool stuff</a></li>
+                            <li><a class="text-muted" href="#">Random feature</a></li>
+                            <li><a class="text-muted" href="#">Team feature</a></li>
+                            <li><a class="text-muted" href="#">Stuff for developers</a></li>
+                            <li><a class="text-muted" href="#">Another one</a></li>
+                            <li><a class="text-muted" href="#">Last time</a></li>
+                        </ul>
+                    </div>
+                    <div class="col-6 col-md">
+                        <h5>Resources</h5>
+                        <ul class="list-unstyled text-small">
+                            <li><a class="text-muted" href="#">Resource</a></li>
+                            <li><a class="text-muted" href="#">Resource name</a></li>
+                            <li><a class="text-muted" href="#">Another resource</a></li>
+                            <li><a class="text-muted" href="#">Final resource</a></li>
+                        </ul>
+                    </div>
+                    <div class="col-6 col-md">
+                        <h5>Resources</h5>
+                        <ul class="list-unstyled text-small">
+                            <li><a class="text-muted" href="#">Business</a></li>
+                            <li><a class="text-muted" href="#">Education</a></li>
+                            <li><a class="text-muted" href="#">Government</a></li>
+                            <li><a class="text-muted" href="#">Gaming</a></li>
+                        </ul>
+                    </div>
+                    <div class="col-6 col-md">
+                        <h5>About</h5>
+                        <ul class="list-unstyled text-small">
+                            <li><a class="text-muted" href="#">Team</a></li>
+                            <li><a class="text-muted" href="#">Locations</a></li>
+                            <li><a class="text-muted" href="#">Privacy</a></li>
+                            <li><a class="text-muted" href="#">Terms</a></li>
+                        </ul>
+                    </div>
+                </div>
+            </footer>
+        {% endblock %}
+    </footer>
+</div>
+
+
+<link rel="stylesheet" href="{% static 'css/style.css' %}">
+</body>
+</html>

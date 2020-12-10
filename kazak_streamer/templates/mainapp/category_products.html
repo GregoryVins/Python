@@ -1,0 +1,20 @@
+{% extends 'base.html' %}
+{% load static %}
+
+{% block container %}
+
+    <h3 class="h3 text-muted">Категория {{ category.name }}</h3>
+
+    <div class="d-flex flex-wrap justify-content-between">
+        {% for product in products %}
+            <a href="{% url 'mainapp:product_detail' product.pk %}" class="w-25 p-3 m-3 form-control text-center">
+                <img src="/media/{{ product.image|default:'products_image/default.jpg' }}" alt="image" class="img-fluid image-size">
+                <h3 class="h3">{{ product.name|upper }}</h3>
+                <p class="">{{ product.description|lower }}</p>
+                <p>Цена: <strong>{{ product.price }} &#8381</strong></p>
+                <p>Кол-во на складе: {{ product.quantity }}</p>
+            </a>
+        {% endfor %}
+    </div>
+
+{% endblock %}

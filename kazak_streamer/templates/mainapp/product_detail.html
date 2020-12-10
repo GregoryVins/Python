@@ -1,0 +1,14 @@
+{% extends 'base.html' %}
+{% load static %}
+
+{% block container %}
+
+    <img src="/media/{{ product.image|default:'products_image/default.jpg' }}" alt="image" class="img-fluid image-size">
+    <h3 class="h3">{{ product.name|upper }}</h3>
+    <p class="">{{ product.description|lower }}</p>
+    <p>Цена: <strong>{{ product.price }} &#8381</strong></p>
+    <p>Кол-во на складе: {{ product.quantity }}</p>
+    <a href="#" class="btn btn-success">Купить</a>
+    <a href="{% url 'mainapp:category' product.category_id %}" class="btn btn-danger">Назад</a>
+
+{% endblock %}

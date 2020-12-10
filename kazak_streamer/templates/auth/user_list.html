@@ -1,0 +1,47 @@
+{% extends 'base.html' %}
+{% load static %}
+
+
+{% block container %}
+
+    {% include 'adminapp/includes/inc__admin_menu.html' %}
+
+    <div class="users-list">
+        <a href="{% url 'adminapp:user_create' %}" class="btn btn-primary">Новый пользователь</a>
+
+        {% for user in object_list %}
+            <div class="form-control {% if not user.is_active %}disabled{% endif %}">
+                <div class="user-role">
+                    {% if user.is_superuser %}
+                        Администратор
+                    {% else %}
+                        Пользователь
+                    {% endif %}
+                    <a href="{% url 'adminapp:user_update' user.pk %}" class="btn btn-primary">
+                        Редактировать
+                    </a>
+                    <a href="{% url 'adminapp:user_delete' user.pk %}" class="btn btn-danger">
+                        Удалить
+                    </a>
+                </div>
+                <div class="user-name">
+                    <p class="h3">{{ user.username }}</p>
+                    <p>{% if user.first_name %}
+                        Имя: <b>{{ user.first_name|title }}</b>
+                        {% if user.last_name %}
+                            <p>Фамилия: {{ user.last_name|title }}</p>
+                        {% endif %}
+                    {% endif %} </p>
+                </div>
+                <div class="user-email">
+                    e-mail: {{ user.email }}
+                </div>
+                <div class="user-last-login">
+                    Последний вход: {{ user.last_login }}
+                </div>
+            </div>
+        {% endfor %}
+
+    </div>
+
+{% endblock %}
