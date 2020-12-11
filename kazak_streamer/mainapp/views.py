@@ -1,4 +1,3 @@
-from django.contrib.auth.decorators import login_required
 from django.shortcuts import render, get_object_or_404
 
 from mainapp.models import Category, Product
@@ -6,7 +5,6 @@ from mainapp.models import Category, Product
 
 def index(request):
     categories = Category.objects.all()
-
     context = {
         'title': 'Главная',
         'categories': categories,

@@ -10,6 +10,10 @@ class Category(models.Model):
     def __str__(self):
         return self.name
 
+    @property
+    def get_image(self):
+        return Product.objects.filter(category__name=self.name).first().image
+
 
 class Product(models.Model):
     """Продукт какой либо категории"""

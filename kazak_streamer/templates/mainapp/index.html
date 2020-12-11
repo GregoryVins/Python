@@ -3,13 +3,16 @@
 
 {% block container %}
 
-    <h3 class="h3 text-muted">Категории:</h3>
+    <div class="d-flex flex-wrap justify-content-around">
+        {% for category in categories %}
 
-    {% for category in categories %}
-        <div class="p-3 d-flex flex-wrap justify-content-between">
-            <a href="{% url 'mainapp:category' category.pk %}">{{ category }}</a>
-            {{ category.description }}
-        </div>
-    {% endfor %}
+            <a href="{% url 'mainapp:category' category.pk %}" class="category-block text-center">
+                <p>{{ category }}</p>
+                <img src="/media/{{ category.get_image|default:'products_image/default.jpg' }}" alt="{{ category }}" class="image-size img-fluid">
+                <p>{{ category.description }}</p>
+            </a>
+
+        {% endfor %}
+    </div>
 
 {% endblock %}

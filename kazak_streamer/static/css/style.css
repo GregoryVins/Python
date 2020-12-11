@@ -1,7 +1,22 @@
+body {
+    background: url("/static/img/background.jpg") no-repeat center / cover;
+}
+
 .disabled {
     opacity: .5;
 }
 
 .image-size {
     max-width: 200px;
+}
+
+.category-block {
+    margin: 5%;
+    width: auto;
+    overflow: auto;
+}
+
+.category-block:hover {
+    transition: .5s;
+    transform: scale(1.03, 1.03);
 }
