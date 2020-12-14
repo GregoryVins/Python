@@ -1,0 +1,23 @@
+{% extends 'base.html' %}
+{% load static %}
+
+{% block container %}
+
+    {% block ad %}{% endblock %}
+
+    {% include 'adboard/includes/inc__categories_menu.html' %}
+
+    <div class="d-flex flex-wrap justify-content-between">
+        {% for product in products %}
+            <a href="{% url 'adboard:ad_detail' product.pk %}" class="w-25 p-3 m-3 form-control text-center">
+                <img src="/media/{{ product.image|default:'products_image/default.jpg' }}" alt="image"
+                     class="img-fluid image-size">
+                <h3 class="h3">{{ product.name|upper }}, {{ product.year }}</h3>
+                <p class="text-muted">{{ product.city }}</p>
+                <p>Цена: <strong>{{ product.price }} &#8381</strong>
+                    <br><span class="text-muted">{{ product.datetime }}</span></p>
+            </a>
+        {% endfor %}
+    </div>
+
+{% endblock %}

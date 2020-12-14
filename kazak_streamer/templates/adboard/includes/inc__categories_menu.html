@@ -1,0 +1,11 @@
+<div class="d-flex flex-wrap justify-content-around">
+    <a href="{% url 'adboard:main_page' 0 %}" class="w-25 text-center">Все</a>
+    {% for category in categories %}
+        <a href="{% url 'adboard:main_page' category.pk %}" class="w-25 text-center">
+            {{ category }} <span class="text-muted w-25">{{ category.get_ads_count }}</span>
+        </a>
+    {% endfor %}
+</div>
+<br>
+<a href="{% url 'adboard:add_ad' %}" class="btn btn-info">Добавть объявление</a>
+<br><br>

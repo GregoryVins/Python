@@ -1,0 +1,21 @@
+{% extends 'base.html' %}
+{% load static %}
+
+{% block ad %}{% endblock %}
+
+{% block container %}
+
+    {% include 'adboard/includes/inc__categories_menu.html' %}
+
+    <h1>{{ ad.name }}</h1>
+
+    <p>{{ ad.description }}</p>
+    <p>Цена: {{ ad.price }}</p>
+    <p>Город: {{ ad.city }}</p>
+    <p>Год: {{ ad.year }}</p>
+    <p>Автор: <span class="text-muted">{{ ad.author }}</span></p>
+    <p>Добавлено: {{ ad.datetime }}</p>
+
+    <br><br>
+    <a href="{% url 'adboard:main_page' ad.ad_category.pk %}" class="btn btn-danger">Назад</a>
+{% endblock %}

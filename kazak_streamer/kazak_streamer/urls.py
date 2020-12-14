@@ -23,6 +23,7 @@ urlpatterns = [
     path('', include('mainapp.urls')),
     path('auth/', include('authapp.urls')),
     path('my/admin/', include('adminapp.urls')),
+    path('adboard/', include('adboard.urls'))
 ]
 
 if settings.DEBUG:

@@ -23,10 +23,10 @@
             <nav class="navbar navbar-expand-lg navbar-light bg-light">
                 <a class="navbar-brand" href="{% url 'mainapp:index' %}">LOGOTYPE</a>
 
-                <div class="collapse navbar-collapse" id="navbarNavAltMarkup">
+                <div class="navbar-collapse">
                     <div class="navbar-nav">
-                        <a class="nav-item nav-link" href="{% url 'mainapp:index' %}">Главная</a>
-                        <a class="nav-item nav-link disabled" href="#">Features</a>
+                        <a class="nav-item nav-link" href="{% url 'mainapp:index' %}">Интернет-магазин</a>
+                        <a class="nav-item nav-link" href="{% url 'adboard:main_page' 0 %}">Доска объявлений</a>
                         <a class="nav-item nav-link disabled" href="#">Pricing</a>
                         {% if user.is_authenticated %}
                             <a class="nav-item nav-link text-success"
@@ -37,12 +37,25 @@
                             <a class="nav-item nav-link" href="{% url 'authapp:login' %}">Login</a>
                         {% endif %}
 
-                    {% if user.is_superuser %}
-                        <a class="nav-item nav-link text-success" href="{% url 'adminapp:index' %}">Admin Panel</a>
-                    {% endif %}
+                        {% if user.is_superuser %}
+                            <a class="nav-item nav-link text-success" href="{% url 'adminapp:index' %}">Admin Panel</a>
+                        {% endif %}
                     </div>
                 </div>
+                <!-- Search form -->
+
+                <form method="post">
+                    <input type="text" class="search-query form-control" placeholder="Search">
+                </form>
+
             </nav>
+            {% block ad %}
+                <a href="https://www.xbox.com/ru-ru/accessories/controllers/xbox-wireless-controller#white"
+                   target="_blank">
+                    <img src="/static/img/bdpagn_display.png" alt="">
+                </a>
+            {% endblock %}
+
         {% endblock %}
     </header>
 
@@ -58,41 +71,37 @@
                         <small class="d-block mb-3 text-muted">© 2017-{% now 'Y' %}</small>
                     </div>
                     <div class="col-6 col-md">
-                        <h5>Features</h5>
+                        <h5>Фишки</h5>
                         <ul class="list-unstyled text-small">
-                            <li><a class="text-muted" href="#">Cool stuff</a></li>
-                            <li><a class="text-muted" href="#">Random feature</a></li>
+                            <li><a class="text-muted" href="#">Прикольная штука</a></li>
+                            <li><a class="text-muted" href="#">Функция команды </a></li>
                             <li><a class="text-muted" href="#">Team feature</a></li>
-                            <li><a class="text-muted" href="#">Stuff for developers</a></li>
-                            <li><a class="text-muted" href="#">Another one</a></li>
-                            <li><a class="text-muted" href="#">Last time</a></li>
+                            <li><a class="text-muted" href="#">Материал для разработчиков</a></li>
                         </ul>
                     </div>
                     <div class="col-6 col-md">
-                        <h5>Resources</h5>
+                        <h5>Ресурсы</h5>
                         <ul class="list-unstyled text-small">
-                            <li><a class="text-muted" href="#">Resource</a></li>
-                            <li><a class="text-muted" href="#">Resource name</a></li>
-                            <li><a class="text-muted" href="#">Another resource</a></li>
-                            <li><a class="text-muted" href="#">Final resource</a></li>
+                            <li><a class="text-muted" href="#">Основные ресурсы</a></li>
+                            <li><a class="text-muted" href="#">Другие ресурсы</a></li>
+                            <li><a class="text-muted" href="#">Бета-версии</a></li>
                         </ul>
                     </div>
                     <div class="col-6 col-md">
-                        <h5>Resources</h5>
+                        <h5>Ресурсы</h5>
                         <ul class="list-unstyled text-small">
-                            <li><a class="text-muted" href="#">Business</a></li>
-                            <li><a class="text-muted" href="#">Education</a></li>
-                            <li><a class="text-muted" href="#">Government</a></li>
-                            <li><a class="text-muted" href="#">Gaming</a></li>
+                            <li><a class="text-muted" href="#">Для бизнеса</a></li>
+                            <li><a class="text-muted" href="#">Образовательный</a></li>
+                            <li><a class="text-muted" href="#">Государственный</a></li>
+                            <li><a class="text-muted" href="#">Игровой</a></li>
                         </ul>
                     </div>
                     <div class="col-6 col-md">
-                        <h5>About</h5>
+                        <h5>О нас</h5>
                         <ul class="list-unstyled text-small">
-                            <li><a class="text-muted" href="#">Team</a></li>
-                            <li><a class="text-muted" href="#">Locations</a></li>
-                            <li><a class="text-muted" href="#">Privacy</a></li>
-                            <li><a class="text-muted" href="#">Terms</a></li>
+                            <li><a class="text-muted" href="#">Команда</a></li>
+                            <li><a class="text-muted" href="#">Местоположение</a></li>
+                            <li><a class="text-muted" href="#">Конфиденциальность</a></li>
                         </ul>
                     </div>
                 </div>

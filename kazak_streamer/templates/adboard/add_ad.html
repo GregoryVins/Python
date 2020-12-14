@@ -1,0 +1,15 @@
+{% extends 'base.html' %}
+{% load static %}
+
+{% block ad %}{% endblock %}
+
+{% block container %}
+    <form method="post" class="form-horizontal">
+        {% csrf_token %}
+        {{ form.as_p }}
+        <input type="submit" value="Отправить" class="btn btn-success">
+    </form>
+    <br><br>
+    <a href="{% url 'adboard:main_page' 0 %}" class="btn btn-danger">Вернуться на доску объявлений</a>
+
+{% endblock %}
